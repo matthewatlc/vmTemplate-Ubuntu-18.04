@@ -29,7 +29,9 @@ cat <<EOL | sudo tee /etc/rc.local
 
 # dynamically create hostname
 if hostname | grep localhost; then
-    hostnamectl set-hostname $(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
+    $hn = "vmUbu1804-"
+    $rand=head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo ''
+    hostnamectl set-hostname $($hn$rand)
 fi
 
 # By default this script does nothing.
